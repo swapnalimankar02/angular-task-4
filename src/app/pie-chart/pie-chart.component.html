@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <form class="form-inline" [formGroup]="chartForm">
+            <div class="col-4 form-group mt-4">
+                <label for="val1">Box-1</label>
+                <input type="number" id="val1" formControlName="val1" (blur)="calculateRemainingValue()" [(ngModel)]="val1">
+                <span class="text-danger" *ngIf="chartForm.get('val1')?.invalid && chartForm.get('val1')?.touched">Value Ecceeds 100%</span>
+            </div>
+            <div class="col-4 form-group mt-4">
+                <label for="val2">Box-2</label>
+                <input type="number" id="val2" formControlName="val2" (blur)="calculateRemainingValue()" [(ngModel)]=val2>
+                <span class="text-danger" *ngIf="chartForm.get('val2')?.invalid && chartForm.get('val2')?.touched">Value Ecceeds 100%</span>
+            </div>
+            <div class="col-4 form-group mt-5 w-5">
+                <button class="btn btn-primary btn-block btn-sm" (click)="createChart()">Create Chart</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <canvas #chartCanvas></canvas>
+    </div>
+</div>
